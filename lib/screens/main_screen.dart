@@ -6,7 +6,7 @@ import '../controllers/book_controller.dart';
 
 class MainScreen extends StatelessWidget {
   final BookController bookController =
-      Get.put(BookController()); // Initialize controller here
+      Get.put(BookController()); 
   final _currentIndex = 0.obs;
   final List<Widget> _screens = [HomeScreen(), FavoriteScreen()];
 

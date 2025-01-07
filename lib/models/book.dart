@@ -58,14 +58,14 @@ class Book {
     this.publishedDate,
   });
 
-  /// Factory constructor to create a Book object from JSON
+  
   factory Book.fromJson(Map<String, dynamic> json) {
     final volumeInfo = json['volumeInfo'] as Map<String, dynamic>? ?? {};
     final imageLinks = volumeInfo['imageLinks'] as Map<String, dynamic>?;
 
     return Book(
-      id: json['id'] as String? ?? 'Unknown ID', // Default fallback
-      title: volumeInfo['title'] as String? ?? 'Untitled', // Default fallback
+      id: json['id'] as String? ?? 'Unknown ID', 
+      title: volumeInfo['title'] as String? ?? 'Untitled', 
       authors: (volumeInfo['authors'] as List<dynamic>?)?.cast<String>() ?? ['Unknown Author'],
       thumbnail: imageLinks?['thumbnail'] as String?,
       description: volumeInfo['description'] as String? ?? 'No description available.',
@@ -73,29 +73,29 @@ class Book {
     );
   }
 
-  /// Convert Book object into a Map for database storage
+  
   Map<String, dynamic> toMap() {
     return {
       'id': id,
       'title': title,
-      'authors': authors.join('|'), // Safer separator than ', '
+      'authors': authors.join('|'), 
       'thumbnail': thumbnail,
     };
   }
 
-  /// Factory constructor to create a Book object from a database map
+  
   factory Book.fromMap(Map<String, dynamic> map) {
     return Book(
       id: map['id'] as String,
       title: map['title'] as String,
-      authors: (map['authors'] as String).split('|'), // Split back into a list
+      authors: (map['authors'] as String).split('|'), 
       thumbnail: map['thumbnail'] as String?,
-      description: null, // DB schema doesn't include this field
-      publishedDate: null, // DB schema doesn't include this field
+      description: null, 
+      publishedDate: null, 
     );
   }
 
-  /// Create a copy of the Book object with updated values
+  
   Book copyWith({
     String? id,
     String? title,

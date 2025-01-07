@@ -30,16 +30,16 @@ class FavoriteBook {
   final String id;
   final String title;
   final String authors;
-  final String? thumbnail; // Nullable thumbnail
+  final String? thumbnail; 
 
   FavoriteBook({
     required this.id,
     required this.title,
     required this.authors,
-    this.thumbnail, // Thumbnail can be optional
+    this.thumbnail, 
   });
 
-  /// Convert object to Map for database storage
+  
   Map<String, dynamic> toMap() {
     return {
       'id': id,
@@ -49,7 +49,7 @@ class FavoriteBook {
     };
   }
 
-  /// Create FavoriteBook object from Map (database)
+  
   factory FavoriteBook.fromMap(Map<String, dynamic> map) {
     return FavoriteBook(
       id: map['id'] as String,
@@ -59,7 +59,7 @@ class FavoriteBook {
     );
   }
 
-  /// Create a copy of the FavoriteBook object with updated values
+  // Copy constructor to create a new instance with updated fields
   FavoriteBook copyWith({
     String? id,
     String? title,
